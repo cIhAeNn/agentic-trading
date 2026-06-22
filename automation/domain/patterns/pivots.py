@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from scipy.signal import find_peaks
 
-from automation.nodes.patterns.models import PivotSet
+from automation.domain.patterns.models import PivotSet
 
 
 def find_pivots(df: pd.DataFrame) -> PivotSet:

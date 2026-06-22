@@ -57,8 +57,8 @@ agentic-trading/
 │   ├── claude_desktop_config.json
 │   └── discord_config.yaml
 ├── data/
-│   ├── 10_trading_patterns.md
-│   └── agentic_screening.md
+│   ├── trading_pattern_watchlist.md
+│   └── company_watchlist.md
 ├── instructions/
 │   └── logs_infrastructure.md
 └── logs/
@@ -140,8 +140,8 @@ The pattern engine is rule-based and uses real OHLCV candles.
 Inputs:
 
 ```text
-data/agentic_screening.md
-data/10_trading_patterns.md
+data/company_watchlist.md
+data/trading_pattern_watchlist.md
 state["market_data"]
 ```
 

@@ -4,7 +4,7 @@ The canonical graph topology lives in automation.graph_orchestrator.
 This file intentionally does not define a second LangGraph topology.
 """
 
-from automation.graph_orchestrator import app
+from automation.graph import app
 
 __all__ = ["app"]
 

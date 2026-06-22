@@ -6,7 +6,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from typing import Any, Dict
 
-from automation.models.state import AgentState
+from automation.models.agent_state import AgentState
 
 
 class _JsonFormatter(logging.Formatter):

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any, Mapping, Optional
 
-from automation.models.approval_pattern_card import ApprovalPatternCard
-from automation.models.buy_sell_amount_price_card import BuySellAmountPriceCard
+from automation.models.discord_card_approval_pattern import ApprovalPatternCard
+from automation.models.discord_card_buy_sell import BuySellAmountPriceCard
 from automation.models.discord_common import (
     Action,
     CardAction,
@@ -14,7 +14,7 @@ from automation.models.discord_common import (
     TransactionStatus,
     TxStatus,
 )
-from automation.models.general_status_card import GeneralStatusCard, IssueSeverity, IssueType
+from automation.models.discord_card_general_status import GeneralStatusCard, IssueSeverity, IssueType
 from automation.models.transaction_result_card import TransactionResultCard
 
 

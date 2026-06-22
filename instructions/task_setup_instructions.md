@@ -21,8 +21,8 @@ The runtime is bound to a Python LangGraph state machine. Claude Desktop Schedul
 | Discord config     | `config/discord_config.yaml`          |
 | Robinhood runtime  | `automation/services/robinhood.py`    |
 | Logging protocol   | `instructions/logs_infrastructure.md` |
-| Screening universe | `data/agentic_screening.md`           |
-| Pattern library    | `data/10_trading_patterns.md`         |
+| Screening universe | `data/company_watchlist.md`           |
+| Pattern library    | `data/trading_pattern_watchlist.md`   |
 
 ## 2. Project-Root File Map
 
@@ -35,8 +35,8 @@ The runtime is bound to a Python LangGraph state machine. Claude Desktop Schedul
 | Discord config      | `config/discord_config.yaml`              |          `R--` | Runtime source of truth for Discord templates, approval regex, timeout, buttons/forms, fallback commands, and Discord log event keys. |
 | Routing constraints | `context/routing_constraints.md`          |          `R--` | Primary instruction authority for identity, account routing constraints, and state transitions.                                       |
 | Screening ops       | `context/screening_and_watchlist_ops.md`  |          `R--` | Defines screening universe handling, data-frame expectations, and watchlist rules.                                                    |
-| Pattern library     | `data/10_trading_patterns.md`             |          `R--` | Defines structural chart-pattern confirmation boundaries.                                                                             |
-| Screening universe  | `data/agentic_screening.md`               |          `R--` | Canonical ticker universe for scanner ingestion.                                                                                      |
+| Pattern library     | `data/trading_pattern_watchlist.md`       |          `R--` | Defines structural chart-pattern confirmation boundaries.                                                                             |
+| Screening universe  | `data/company_watchlist.md`               |          `R--` | Canonical ticker universe for scanner ingestion.                                                                                      |
 | Pipeline entry      | `automation/pipeline.py`                  |          `R--` | Scheduled task entry point and graph invocation layer.                                                                                |
 | Graph orchestrator  | `automation/graph_orchestrator.py`        |          `R--` | Compiles LangGraph nodes, edges, checkpoints, and interrupts.                                                                         |
 | State model         | `automation/models/state.py`              |          `R--` | Defines shared `AgentState` schema.                                                                                                   |
@@ -82,8 +82,8 @@ config/mcp_api_inventory.md
 config/discord_config.yaml
 context/routing_constraints.md
 context/screening_and_watchlist_ops.md
-data/10_trading_patterns.md
-data/agentic_screening.md
+data/trading_pattern_watchlist.md
+data/company_watchlist.md
 automation/pipeline.py
 automation/graph_orchestrator.py
 automation/models/state.py
@@ -129,7 +129,7 @@ Read `config/mcp_api_inventory.md` and verify MCP availability for the active gr
 
 | Check           | Required Condition             |
 | --------------- | ------------------------------ |
-| Source file     | `data/agentic_screening.md`    |
+| Source file     | `data/company_watchlist.md`    |
 | Role            | Canonical ticker universe      |
 | Required output | Non-empty valid ticker list    |
 | Failure action  | Log file fault and abort graph |
@@ -140,7 +140,7 @@ Do not query Robinhood watchlists for the scanner universe.
 
 | Check           | Required Condition                             |
 | --------------- | ---------------------------------------------- |
-| Source file     | `data/10_trading_patterns.md`                  |
+| Source file     | `data/trading_pattern_watchlist.md`            |
 | Role            | Canonical pattern validation library           |
 | Required output | Readable pattern rules and buy/sell boundaries |
 | Failure action  | Log file fault and abort graph                 |
@@ -200,10 +200,10 @@ If false:
 | Vertex                       | Domain                    | Objective                                                                                                |
 | ---------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `pre_flight_check`           | Bootstrap / Observability | Validate files, logs, MCP inventory, Discord config, and environment state.                              |
-| `load_screening_universe`    | Ingestion                 | Read tickers from `data/agentic_screening.md`.                                                           |
+| `load_screening_universe`    | Ingestion                 | Read tickers from `data/company_watchlist.md`.                                                           |
 | `market_window_gate`         | Scheduling                | Validate current ET time and exchange-open state.                                                        |
 | `extract_telemetry`          | Market Data               | Retrieve current price and account telemetry through MCP services.                                       |
-| `pattern_validation`         | Strategy                  | Match telemetry against `data/10_trading_patterns.md`.                                                   |
+| `pattern_validation`         | Strategy                  | Match telemetry against `data/trading_pattern_watchlist.md`.                                             |
 | `risk_validation`            | Risk                      | Check cash, buying power, exposure, position size, and account constraints.                              |
 | `discord_submit`             | HITL Gate                 | Render Discord trade proposal through `automation/services/discord.py` and `config/discord_config.yaml`. |
 | `approval_poll`              | HITL Gate                 | Read Discord replies and parse operator action.                                                          |
@@ -222,9 +222,9 @@ The graph must execute the lifecycle in order.
 |    2 | Runtime file validation    | Verify required project files. Do not require `instructions/discord_messaging_protocol.md`. |
 |    3 | Discord config validation  | Load `automation/services/discord.py` and `config/discord_config.yaml`.                     |
 |    4 | Temporal gate              | Validate current ET time against scheduled market window.                                   |
-|    5 | Screening load             | Read tickers from `data/agentic_screening.md`.                                              |
+|    5 | Screening load             | Read tickers from `data/company_watchlist.md`.                                              |
 |    6 | Telemetry extraction       | Call approved MCP tools for market/account telemetry.                                       |
-|    7 | Pattern validation         | Match against `data/10_trading_patterns.md`.                                                |
+|    7 | Pattern validation         | Match against `data/trading_pattern_watchlist.md`.                                          |
 |    8 | Risk validation            | Check cash, buying power, exposure, and account constraints.                                |
 |    9 | Discord dispatch           | Render trade message using `config/discord_config.yaml`.                                    |
 |   10 | Ledger stage               | Write `ORDER_STAGED` to `logs/activity_ledger.json`.                                        |
@@ -378,8 +378,8 @@ Required behavior:
 
 | Rule             | Requirement                                                       |
 | ---------------- | ----------------------------------------------------------------- |
-| Screening source | `data/agentic_screening.md`                                       |
-| Pattern source   | `data/10_trading_patterns.md`                                     |
+| Screening source | `data/company_watchlist.md`                                       |
+| Pattern source   | `data/trading_pattern_watchlist.md`                               |
 | Discord source   | `automation/services/discord.py` and `config/discord_config.yaml` |
 | Logging source   | `instructions/logs_infrastructure.md`                             |
 | Removed file     | Do not use `instructions/discord_messaging_protocol.md`           |

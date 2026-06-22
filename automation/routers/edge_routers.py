@@ -1,6 +1,6 @@
 from typing import Literal
 
-from automation.models.state import AgentState
+from automation.models.agent_state import AgentState
 
 
 class GraphRouters:

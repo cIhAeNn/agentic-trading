@@ -27,8 +27,8 @@ The runtime environment and state transitions are programmatically bound to a Py
 | **Robinhood Service**    | `automation/services/robinhood.py`        | Runtime brokerage service for account telemetry, holdings, buying power, cost basis, and approved execution routing.                               |
 | **Routing Protocol**     | `context/routing_constraints.md`          | Primary instruction authority for identity, account routing constraints, and state transitions.                                                    |
 | **Screening Ops**        | `context/screening_and_watchlist_ops.md`  | Rules for handling the screening universe and market data frames.                                                                                  |
-| **Pattern Library**      | `data/10_trading_patterns.md`             | Structural geometric technical chart confirmation boundaries.                                                                                      |
-| **Screening Universe**   | `data/agentic_screening.md`               | Canonical target ticker universe list to parse.                                                                                                    |
+| **Pattern Library**      | `data/trading_pattern_watchlist.md`       | Structural geometric technical chart confirmation boundaries.                                                                                      |
+| **Screening Universe**   | `data/company_watchlist.md`               | Canonical target ticker universe list to parse.                                                                                                    |
 | **System Logging**       | `instructions/logs_infrastructure.md`     | Governing authority for log schemas, JSON formats, event routing, and log paths.                                                                   |
 | **Task Setup**           | `instructions/task_setup_instructions.md` | Local workspace bootstrap gates and validation checkpoints.                                                                                        |
 

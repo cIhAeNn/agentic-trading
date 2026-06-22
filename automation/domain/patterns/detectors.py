@@ -2,15 +2,15 @@ from typing import Callable, Optional
 
 import pandas as pd
 
-from automation.nodes.patterns.models import EngineConfig, PatternRule, PivotSet
-from automation.nodes.patterns.pivots import (
+from automation.domain.patterns.models import EngineConfig, PatternRule, PivotSet
+from automation.domain.patterns.pivots import (
     last_pivots,
     max_high_between,
     min_low_between,
     recent_channel,
     similar,
 )
-from automation.nodes.patterns.scoring import build_setup, volume_ok
+from automation.domain.patterns.scoring import build_setup, volume_ok
 
 
 Detector = Callable[[str, pd.DataFrame, PivotSet, PatternRule, EngineConfig], Optional[dict]]

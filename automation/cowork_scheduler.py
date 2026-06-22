@@ -5,10 +5,10 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from zoneinfo import ZoneInfo
 
-from automation.graph_orchestrator import app
-from automation.models.state import AgentState
-from automation.nodes.pattern_engine import PatternEngine
-from automation.nodes.patterns.models import EngineConfig, runtime_env
+from automation.graph import app
+from automation.models.agent_state import AgentState
+from automation.nodes.pattern_models import PatternEngine
+from automation.domain.patterns.models import EngineConfig, runtime_env
 from automation.runtime.discord_polling import DiscordPollingClient, DiscordPollingError
 from automation.runtime.graph_runtime import GraphRuntime
 from automation.runtime.mcp_dispatcher import MCPDispatcher

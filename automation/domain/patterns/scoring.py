@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from automation.nodes.patterns.models import EngineConfig, PatternRule
+from automation.domain.patterns.models import EngineConfig, PatternRule
 
 
 def trend_ok(df: pd.DataFrame, direction: str) -> bool:
