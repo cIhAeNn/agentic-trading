@@ -1,0 +1,110 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+tokens/
+credentials/
+
+# Claude Desktop / local MCP config with secrets
+config/claude_desktop_config.json
+config/claude_desktop_config.local.json
+config/*.local.json
+config/*.secret.json
+
+# Keep safe templates if you create them
+!config/claude_desktop_config.example.json
+!config/discord_config.example.yaml
+
+# Runtime logs and audit data
+logs/*.log
+logs/*.json
+logs/*.jsonl
+logs/*.tmp
+logs/.__*
+logs/graph_topology.png
+
+# Keep folder placeholders if used
+!logs/.gitkeep
+
+# Scheduler / queue runtime state
+*.sqlite
+*.sqlite3
+*.db
+checkpoints/
+runtime_state/
+state_snapshots/
+
+# Data files that may contain private account/screening exports
+data/**/*.xlsx
+data/**/*.xls
+data/**/*.csv
+data/**/*.parquet
+data/**/*.feather
+data/**/*.pkl
+data/**/*.pickle
+
+# Keep public Markdown strategy/input files
+!data/**/*.md
+
+# Reports / generated output
+reports/
+output/
+exports/
+artifacts/
+*.zip
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Windows
+desktop.ini
+
+# Node, if any tooling is added later
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.bak
+*.swp
+*.swo

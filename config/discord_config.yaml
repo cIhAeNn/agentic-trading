@@ -1,0 +1,44 @@
+v: 3
+tz: America/New_York
+
+channel:
+  env: TARGET_CHANNEL_ID
+  required: true
+
+approval:
+  tokens:
+    - Approve
+    - Go
+    - Yes
+  case_sensitive: false
+  timeout_min: 5
+  size_required: true
+  size_modes:
+    - shares
+    - amount
+  text:
+    shares: '^(approve|go|yes)\s+shares\s+(\d+)$'
+    amount: '^(approve|go|yes)\s+amount\s+(\d+(?:\.\d{1,2})?)$'
+    reject: '^(reject|no|cancel)$'
+    refresh: '^(refresh|recheck|revalidate)$'
+
+safety:
+  human_approval: true
+  revalidate_after_approval: true
+  execute_only_if_valid: true
+  cry_if_invalid: true
+  block_if_no_size: true
+  block_if_timeout: true
+  block_if_no_buying_power: true
+  block_if_allocation_exceeded: true
+
+logs:
+  ok: logs/activity_ledger.json
+  err: logs/error_trace.json
+  max_rows: 25
+  events:
+    staged: ORDER_STAGED
+    approved: ORDER_APPROVED
+    executed: ORDER_EXECUTED
+    invalidated: ORDER_INVALIDATED
+    error: API_ERROR

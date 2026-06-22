@@ -1,0 +1,20 @@
+# Core State Machine Framework
+langgraph>=0.1.4
+langchain-core>=0.2.0
+
+# Discord / Runtime Config
+PyYAML>=6.0.1
+
+# Pattern Recognition Engine
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.11.0
+
+# Timezone Handling
+# Python 3.9+ includes zoneinfo in the standard library.
+# Only install the backport if running Python < 3.9.
+backports.zoneinfo; python_version < "3.9"
+
+# Graph Visualization Support
+# Required for app.get_graph().draw_mermaid_png()
+pillow>=10.0.0

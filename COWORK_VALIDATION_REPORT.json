@@ -1,0 +1,47 @@
+{
+  "compile": [
+    {
+      "file": "automation/cowork_scheduler.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/models/state.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/runtime/__init__.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/runtime/discord_polling.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/runtime/graph_runtime.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/runtime/mcp_dispatcher.py",
+      "status": "PASS"
+    },
+    {
+      "file": "automation/runtime/state_utils.py",
+      "status": "PASS"
+    }
+  ],
+  "implemented": {
+    "discord_polling_listening": true,
+    "mcp_dispatch_loop": true,
+    "same_thread_resume": true,
+    "fresh_ohlcv_recheck_after_approval": true,
+    "broker_execution_dispatch": true,
+    "execution_confirmation_after_broker_confirmation": true,
+    "no_fake_market_data": true,
+    "no_fake_account_balances": true,
+    "no_fake_broker_execution": true
+  },
+  "safe_fallback": {
+    "unconfigured_mcp_requests_are_queued_to_logs": true,
+    "broker_request_requires_external_confirmation": true
+  }
+}
